@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+.nav-list{
+    list-style: none;
+    margin-left: 32px;
+    display: flex;
+    letter-spacing: 3px;
+}
+
+li form button{
+    width: 100px;
+    height: 30px;   
+    border-radius: 32px;
+}
+
+div {
+    position: relative;
+    width: 100%;
+    
+}
+h3{
+    position: relative;
+    width: 100%;
+    text-align: left;
+    color: #9EF8EE;
+
+}
+input {
+    border-radius: 0;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #506266;
+    color: white;
+    font-weight: 500;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+main > div {
+    width: 500px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    border-bottom: lightgray 3px solid;
+}
+
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: default;
+    user-select: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+header > div {
+    width: 50%;
+}
+
+ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+#li-exit {
+    background-color: transparent;
+}
+
+#li-exit > form > button {
+    background-color: #BF0000;
+    color: white;
+}
+
+#li-exit > form > button:hover {
+    background-color: #FF0000;
+}
+
+ul > li {
+    background-color: #9EF8EE;
+    color: gray;
+    font-weight: bolder;
+    padding: 2px 5px;
+    border-radius: 8px;
+}
+
+.iconLixo {
+    background: transparent;
+}
+
+tr {
+    background-color: gray;
+}
+
+table {
+    padding: 5px;
+    width: inherit;
+}
+
+td {
+    padding: 3px 5px;
+}
+
+h3{
+    text-align: center;
+}
+
+main h1 {
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+main form input {
+    background: #161923;
+    width: 300px;
+    height: 30px;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+    outline: none;
+    color: white;
+    font-size: 1rem;
+    border: 1px solid #161923;
+    border-radius: 8px;
+}
+
+main form button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 32px;
+    background: #FF6B1A;
+    color: white;
+    font-size: 1.1rem;
+    transition: all .3s ease-in-out;
+}
+
+main form button[type="submit"]:hover {
+    background: #F2BE22;
+}
+
+
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+    section.images img {
+        width: 110%;
+    }
+
+    section.images .circle {
+        clip-path: circle(35% at right 80%);
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    section.images {
+        display: none;
+        visibility: hidden;
+    }
+
+    main {
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    main h1 {
+        font-size: 2rem;
+    }
+
+    main .alternative span {
+        font-size: 0.8rem;
+    }
+
+    main form label span, main form input[type="submit"] {
+        font-size: 1rem;
+    }
+}
+.valor{
+    padding-left:8px;
+}
+
+.labelForn {
+    background-color: #161923;
+    width: 100%;
+    padding: 3px 5px;
+    border-radius: 8px;
+    text-align: start;
+    color: gray;
+}
+
+.labelForn > select {
+    background-color: transparent;
+    color: white;
+}
+
+option {
+    background-color: #161923;
+}
