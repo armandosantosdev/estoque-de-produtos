@@ -142,7 +142,7 @@ $nome = $_SESSION['authUser']['nome'];
 
 ?>
                 <tr>
-                    <td class="valor"><?= $rowViewForn['nome'] ?></td>
+                    <td class="valor"><?= $rowViewForn['nome_forn'] ?></td>
                     <td class="valor"><?= $rowViewForn['cnpj'] ?></td>
                     <td class="valor"><?= $rowViewForn['contato'] ?></td>
                 </tr>
@@ -159,16 +159,18 @@ $nome = $_SESSION['authUser']['nome'];
 
         <div>
             
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="controllers/cont_addProd.php" method="post" enctype="multipart/form-data">
             <legend>Adicione o produto</legend>
                 <label for="nomeProd"><input type="text" name="nomeProd" id="nomeProd" placeholder="Nome:" required></label>
                 <label for="codigoProd"><input type="text" name="codigoProd" id="codigoProd" placeholder="Codigo:" required></label>
 
-                <input type="file" name="" id="">
+                <label for="imgProd">Imagem do Produto</label>
+                <input type="file" name="imgProd" id="imgProd" accept="image/*" required>
 
                 <label for="fornProd" class="labelForn">Fornecedor
                 <select name="fornecedorProd" id="fornProd">
                     
+                    <option value="" selected disabled>SELECIONE</option>
 <?php
                 $sqlListForn = "SELECT * FROM fornecedor";
                 $resultListForn = $conn->query($sqlListForn);
@@ -178,7 +180,7 @@ $nome = $_SESSION['authUser']['nome'];
                 } else {
                     while($rowListForn = $resultListForn->fetch_assoc()) {
 ?>
-                        <option value="<?= $rowListForn['id'] ?>"><?= $rowListForn['nome'] ?></option>
+                        <option value="<?= $rowListForn['id'] ?>"><?= $rowListForn['nome_forn'] ?></option>
 <?php
                     }
                 }
@@ -195,6 +197,53 @@ $nome = $_SESSION['authUser']['nome'];
             </form>
 
 
+        </div>
+
+        <div>
+            <h3>Produtos:</h3>
+
+            <table>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Codigo</th>
+                    <th>Marca</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Fornecedor</th>
+                    <th>Data da compra</th>
+                </tr>
+
+            <?php
+            $sqlViewProd= "SELECT * FROM produtos INNER JOIN fornecedor ON produtos.idFornecedor = fornecedor.id";
+
+            $resultViewProd= $conn->query($sqlViewProd);
+
+            if($resultViewProd->num_rows == 0) {
+                echo "Nao existe nenhum Produtos";
+            } else {
+
+                while($rowViewProd = $resultViewProd->fetch_assoc()) {
+
+?>
+                <tr>
+                    <td class="valor"><img style="height: 80px; aspect-ratio: 1 /1;" src="assets/uploads/<?= $rowViewProd['image'] ?>" alt=""></td>
+                    <td class="valor"><?= $rowViewProd['nome'] ?></td>
+                    <td class="valor"><?= $rowViewProd['codigo'] ?></td>
+                    <td class="valor"><?= $rowViewProd['marca'] ?></td>
+                    <td class="valor"><?= $rowViewProd['quantidade'] ?></td>
+                    <td class="valor"><?= $rowViewProd['preco'] ?></td>
+                    <td class="valor"><?= $rowViewProd['nome_forn'] ?></td>
+                    <td class="valor"><?= $rowViewProd['dataCompra'] ?></td>
+                </tr>
+<?php
+                    
+                }                
+
+            }
+            ?>
+
+            </table>
         </div>
     </main>
 

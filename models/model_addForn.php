@@ -13,7 +13,7 @@ if(isset($_SESSION['nomeForn'])) {
     $resultForn = $conn->query($sqlVerifForn);
 
     if($resultForn->num_rows == 0) {
-        $sqlAddForn = "INSERT INTO fornecedor (nome, cnpj, contato) VALUES ('$nomeForn', '$cnpjForn', '$contForn')";
+        $sqlAddForn = "INSERT INTO fornecedor (nome_forn, cnpj, contato) VALUES ('$nomeForn', '$cnpjForn', '$contForn')";
 
         if($conn->query($sqlAddForn) == TRUE) {
             header("location: ../index.php");

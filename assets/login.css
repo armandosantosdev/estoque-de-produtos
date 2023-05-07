@@ -116,7 +116,6 @@ main form button[type="submit"]:hover {
 }
 
 
-
 @media only screen and (min-width: 900px) and (max-width: 1200px) {
     section.images img {
         width: 110%;
