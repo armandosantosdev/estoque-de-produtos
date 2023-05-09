@@ -9,5 +9,9 @@ if(empty($_SESSION['authUser'])) {
 
     include "views/view_gerente.php";
     
+} else if($_SESSION['authUser']['cargo'] == "VENDEDOR") {
+
+    include "views/view_vendedor.php";
+    
 }
-?>
+ ?>
