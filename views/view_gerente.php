@@ -78,6 +78,7 @@ $nome = $_SESSION['authUser']['nome'];
             <tr>
                 <th>Nome</td>
                 <th>CPF</td>
+                <th>Senha</th>
             </tr>
 
         <?php
@@ -87,6 +88,7 @@ $nome = $_SESSION['authUser']['nome'];
             <tr>
                 <td class="valor"><?= $rowsDataVend['nome'] ?></td>
                 <td class="valor"><?= $rowsDataVend['cpf'] ?></td>
+                <td class="valor"><?= $rowsDataVend['senha'] ?></td>
                 <td>
                     <form action="<?= htmlspecialchars('') ?>" method="get" class="delVendForm">
                         <input type="hidden" name="id_vendedor" value="<?= $rowsDataVend['id'] ?>">
