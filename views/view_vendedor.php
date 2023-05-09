@@ -18,7 +18,7 @@ if(!isset($_GET['btnSearch'])){
     $sqlListProd = "SELECT * FROM produtos WHERE quantidade > 0";
 }elseif(isset($_GET['btnSearch'])){
     $search = $_GET['textSearch'];
-    $sqlListProd = "SELECT * FROM produtos WHERE nome LIKE '%$search%' AND quantidade > 0";
+    $sqlListProd = "SELECT * FROM produtos WHERE nome LIKE '%$search%' OR marca LIKE '%$search%' AND quantidade > 0";
 }else{
     $sqlListProd = "SELECT * FROM produtos WHERE quantidade > 0";
 }
@@ -65,7 +65,7 @@ $resultListProd = $conn->query($sqlListProd);
         <div>
 
 <?php
-    if($result->num_rows > 0) {
+    if($resultListProd->num_rows == 0) {
 
         echo "Não há produtos!";
 
@@ -84,10 +84,10 @@ $resultListProd = $conn->query($sqlListProd);
                     <p>R$<?= $rowListProd['preco'] ?></p> 
                 </div>
 
-                <form action="" method="post">
+                <form action="controllers/cont_compra.php" method="post">
                     <label for="quantidadeProd">Quantidade:<input type="number" name="quantidadeProd" max="<?= $rowListProd['quantidade'] ?>" required></label>
 
-                    <input type="hidden" name="idProd" value="<?= $idUser ?>">
+                    <input type="hidden" name="idProd" value="<?= $rowListProd['id'] ?>">
 
                     <button type="submit" name="btnCompra"><i class="fa-sharp fa-solid fa-arrow-right"></i></button>
                 </form>
