@@ -214,6 +214,7 @@ $nome = $_SESSION['authUser']['nome'];
                     <th>Preço</th>
                     <th>Fornecedor</th>
                     <th>Data da compra</th>
+                    <th>Adicionar produtos</th>
                 </tr>
 
             <?php
@@ -237,6 +238,13 @@ $nome = $_SESSION['authUser']['nome'];
                     <td class="valor"><?= $rowViewProd['preco'] ?></td>
                     <td class="valor"><?= $rowViewProd['nome_forn'] ?></td>
                     <td class="valor"><?= $rowViewProd['dataCompra'] ?></td>
+                    <td>
+                        <form action="models/model_addQuantProd.php" method="get">
+                            <input type="hidden" name="idProdAdd" value="<?= $rowViewProd['id'] ?>">
+                            <input type="number" name="quantProdAdd" id="" style="width: 50px;">
+                            <button type="submit" name="btnSubmit">+</button>
+                        </form>
+                    </td>
                 </tr>
 <?php
                     
