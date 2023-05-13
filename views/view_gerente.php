@@ -214,6 +214,7 @@ $nome = $_SESSION['authUser']['nome'];
                     <th>Preço</th>
                     <th>Fornecedor</th>
                     <th>Data da compra</th>
+                    <th>Adicionar produtos</th>
                 </tr>
 
             <?php
@@ -237,6 +238,56 @@ $nome = $_SESSION['authUser']['nome'];
                     <td class="valor"><?= $rowViewProd['preco'] ?></td>
                     <td class="valor"><?= $rowViewProd['nome_forn'] ?></td>
                     <td class="valor"><?= $rowViewProd['dataCompra'] ?></td>
+                    <td>
+                        <form action="models/model_addQuantProd.php" method="post">
+                            <input type="hidden" name="idProdAdd" value="<?= $rowViewProd['id'] ?>">
+                            <input type="number" name="quantProdAdd" id="" style="width: 50px;">
+                            <button type="submit" name="btnSubmit">+</button>
+                        </form>
+                    </td>
+                </tr>
+<?php
+                    
+                }                
+
+            }
+            ?>
+
+            </table>
+        </div>
+
+        <div>
+            <h3>Vendas:</h3>
+
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Vendedor</th>
+                    <th>Quantidade</th>
+                    <th>Valor da venda</th>
+                    <th>Data</th>
+                </tr>
+
+            <?php
+            $sqlViewVendas= "SELECT *, users.nome AS nome_user, produtos.nome AS nome_produto FROM vendas INNER JOIN produtos ON vendas.idProduto = produtos.id INNER JOIN users ON vendas.idUser = users.id";
+
+            $resultViewVendas= $conn->query($sqlViewVendas);
+
+            if($resultViewVendas->num_rows == 0) {
+                echo "Nao existe nenhuma venda";
+            } else {
+
+                while($rowViewVendas = $resultViewVendas->fetch_assoc()) {
+
+                    $valorVenda = $rowViewVendas['quant_prod'] * $rowViewVendas['preco'];
+
+?>
+                <tr>
+                    <td class="valor"><?= $rowViewVendas['nome_produto'] ?></td>
+                    <td class="valor"><?= $rowViewVendas['nome_user'] ?></td>
+                    <td class="valor"><?= $rowViewVendas['quant_prod'] ?></td>
+                    <td class="valor">R$<?= $valorVenda ?></td>
+                    <td class="valor"><?= $rowViewVendas['dataVenda'] ?></td>
                 </tr>
 <?php
                     

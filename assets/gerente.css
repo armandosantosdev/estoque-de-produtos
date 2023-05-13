@@ -6,6 +6,10 @@
     letter-spacing: 3px;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 li form button{
     width: 100px;
     height: 30px;   
