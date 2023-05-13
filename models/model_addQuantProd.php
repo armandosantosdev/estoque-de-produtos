@@ -1,7 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 if(isset($_POST['btnSubmit'])) {
 
-    require "../config/connect_db.php";
+    require_once "../config/connect_db.php";
 
     $idProd = $_POST['idProdAdd'];
     $quantProdAdd = $_POST['quantProdAdd'];
@@ -16,7 +19,7 @@ if(isset($_POST['btnSubmit'])) {
     $quantidFinal = $quantProdAdd + $quantProd;
 
     $sqlAddQuand = "UPDATE produtos SET quantidade = $quantidFinal WHERE id = $idProd";
-    $conm->query($sqlAddQuand);
+    $conn->query($sqlAddQuand);
 
     header("location: ../index.php");
     

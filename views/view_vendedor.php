@@ -85,7 +85,7 @@ $resultListProd = $conn->query($sqlListProd);
                 </div>
 
                 <form action="controllers/cont_compra.php" method="post">
-                    <label for="quantidadeProd">Quantidade:<input type="number" name="quantidadeProd" max="<?= $rowListProd['quantidade'] ?>" required></label>
+                    <label for="quantidadeProd">Quantidade:<input type="number" name="quantidadeProd" max="<?= $rowListProd['quantidade'] ?>" min="1" required></label>
 
                     <input type="hidden" name="idProd" value="<?= $rowListProd['id'] ?>">
 

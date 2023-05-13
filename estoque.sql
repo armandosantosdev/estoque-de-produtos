@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 09, 2023 at 03:03 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Tempo de geração: 13/05/2023 às 21:43
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `estoque`
+-- Banco de dados: `estoque`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fornecedor`
+-- Estrutura para tabela `fornecedor`
 --
 
 CREATE TABLE `fornecedor` (
@@ -35,7 +35,7 @@ CREATE TABLE `fornecedor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `fornecedor`
+-- Despejando dados para a tabela `fornecedor`
 --
 
 INSERT INTO `fornecedor` (`id`, `nome_forn`, `cnpj`, `contato`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `fornecedor` (`id`, `nome_forn`, `cnpj`, `contato`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -63,17 +63,17 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `produtos`
+-- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `codigo`, `marca`, `quantidade`, `preco`, `image`, `idFornecedor`, `idUser`, `dataCompra`) VALUES
-(1, 'Refri', '0019219291921991291', 'Fanta', 10, 5, 'logo-transparente.png', 1, 1, '2023-05-10'),
+(1, 'Refri', '0019219291921991291', 'Fanta', 6, 5, 'logo-transparente.png', 1, 1, '2023-05-10'),
 (2, 'Arroz', '01209213912093912', '01', 100, 15, 'aisleriot.png', 2, 1, '2023-05-19');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estrutura para tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -85,17 +85,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Despejando dados para a tabela `users`
 --
 
 INSERT INTO `users` (`id`, `cargo`, `senha`, `nome`, `cpf`) VALUES
 (1, 'GERENTE', 'j1012', 'Armando Santos', '012.345.678-90'),
-(9, 'VENDEDOR', '123', 'Anderson ', '10508626358');
+(9, 'VENDEDOR', '123', 'Anderson ', '10508626358'),
+(12, 'VENDEDOR', '123', 'jose', '098098098');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendas`
+-- Estrutura para tabela `vendas`
 --
 
 CREATE TABLE `vendas` (
@@ -107,60 +108,68 @@ CREATE TABLE `vendas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Despejando dados para a tabela `vendas`
+--
+
+INSERT INTO `vendas` (`id`, `quant_prod`, `idUser`, `idProduto`, `dataVenda`) VALUES
+(1, 1, 12, 1, '2023-05-13 16:42:29'),
+(2, 5, 12, 1, '2023-05-13 16:43:05');
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `fornecedor`
+-- Índices de tabela `fornecedor`
 --
 ALTER TABLE `fornecedor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Índices de tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `vendas`
+-- Índices de tabela `vendas`
 --
 ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `fornecedor`
+-- AUTO_INCREMENT de tabela `fornecedor`
 --
 ALTER TABLE `fornecedor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `produtos`
+-- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `vendas`
+-- AUTO_INCREMENT de tabela `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
