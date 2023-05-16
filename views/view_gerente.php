@@ -192,7 +192,7 @@ $nome = $_SESSION['authUser']['nome'];
                 
                 <label for="marcaProd"><input type="text" name="marcaProd" id="marcaProd" placeholder="Marca:" required></label>
                 <label for="quantidadeProd"><input type="number" name="quantidadeProd" id="quantidadeProd" placeholder="Quantidade:" required></label>
-                <label for="precoProd"><input type="number" name="precoProd" id="precoProd" placeholder="Preço da unidade (R$):" required></label>
+                <label for="precoProd"><input type="number" step="0.01" name="precoProd" id="precoProd" placeholder="Preço da unidade (R$):" required></label>
                 <label for="dataProd"><input type="date" name="dataProd" id="dataProd" placeholder="Data da compra:" required></label>
 
                 <button type="submit" name="btnAddProduto"><i class="fa-solid fa-plus"></i></button>
@@ -218,7 +218,7 @@ $nome = $_SESSION['authUser']['nome'];
                 </tr>
 
             <?php
-            $sqlViewProd= "SELECT * FROM produtos INNER JOIN fornecedor ON produtos.idFornecedor = fornecedor.id";
+            $sqlViewProd= "SELECT *, produtos.id AS produtos_id FROM produtos INNER JOIN fornecedor ON produtos.idFornecedor = fornecedor.id";
 
             $resultViewProd= $conn->query($sqlViewProd);
 
@@ -240,7 +240,7 @@ $nome = $_SESSION['authUser']['nome'];
                     <td class="valor"><?= $rowViewProd['dataCompra'] ?></td>
                     <td>
                         <form action="models/model_addQuantProd.php" method="post">
-                            <input type="hidden" name="idProdAdd" value="<?= $rowViewProd['id'] ?>">
+                            <input type="hidden" name="idProdAdd" value="<?= $rowViewProd['produtos_id'] ?>">
                             <input type="number" name="quantProdAdd" id="" style="width: 50px;">
                             <button type="submit" name="btnSubmit">+</button>
                         </form>

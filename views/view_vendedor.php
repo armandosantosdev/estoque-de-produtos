@@ -56,6 +56,7 @@ $resultListProd = $conn->query($sqlListProd);
     <main>
 
         <div>
+        <h3>Pesquise o produto</h3>
             <form action="<?= htmlspecialchars('') ?>" method="get">
                 <input type="text" name="textSearch" id="textSearch">
                 <button name="btnSearch" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
